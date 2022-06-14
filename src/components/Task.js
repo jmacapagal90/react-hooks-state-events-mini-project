@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Task() {
+function Task({tasks,handleDeleteTask}) {
+
+  //map over the tasks and create div cards for each
+   const TaskCard = 
+    tasks.map((task)=>(
+      <div className="task">
+        <div className="label">{task.category}</div>
+        <div className="text">{task.text}</div>
+        <button className="delete" onClick={()=>handleDeleteTask(task.text)}>X</button>
+      </div>
+   ))
+  //return JSX of the cards
   return (
-    <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
-      <button className="delete">X</button>
-    </div>
-  );
+    <>{TaskCard}</>
+  )
 }
 
 export default Task;
